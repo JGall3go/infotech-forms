@@ -1,0 +1,10 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    width: 400px;
+    background-color: rgb(230, 230, 230);
+    padding: 20px;
+}
