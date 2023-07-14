@@ -19,7 +19,7 @@
         <form action="/acta-servicios" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">Fecha de Servicio</label>
-                <input type="text" class="form-control" name="fservicio" aria-describedby="emailHelp" placeholder="mm/dd/aa">
+                <input type="date" class="form-control" name="fservicio" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Nombre del Ingeniero/Técnico</label>
@@ -56,7 +56,53 @@
             <div class="form-group">
                 <label for="exampleFormControlFile1">Evidencia</label>
                 <input type="file" class="form-control-file" name="evidencia" accept="image/*" multiple>
-              </div>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Evaluación del Servicio</label>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;" class="sub-title" scope="col"></th>
+                            <th style="text-align: center;" scope="col">Excelente</th>
+                            <th style="text-align: center;" scope="col">Bueno</th>
+                            <th style="text-align: center;" scope="col">Regular</th>
+                            <th style="text-align: center;" scope="col">Malo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="sub-title" style="background-color: rgb(243, 243, 243);">La solución de su solicitud fue satisfactoria</td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="satisfaccion" id="exampleRadios1" value="1" ></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="satisfaccion" id="exampleRadios1" value="2" ></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="satisfaccion" id="exampleRadios1" value="3" ></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="satisfaccion" id="exampleRadios1" value="4" ></td>
+                        </tr>
+                        <tr>
+                            <td class="sub-title" style="background-color: rgb(243, 243, 243);">Tiempo de respuesta del servicio</td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="tiempo_respuesta" id="exampleRadios1" value="1" ></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="tiempo_respuesta" id="exampleRadios1" value="2" ></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="tiempo_respuesta" id="exampleRadios1" value="3" ></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="tiempo_respuesta" id="exampleRadios1" value="4" ></td>
+                        </tr>
+                        <tr>
+                            <td class="sub-title" style="background-color: rgb(243, 243, 243);">Cómo califica la calidad técnica</td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_tecnica" id="exampleRadios1" value="1" ></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_tecnica" id="exampleRadios1" value="2" ></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_tecnica" id="exampleRadios1" value="3" ></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_tecnica" id="exampleRadios1" value="4" ></td>
+                        </tr>
+                        <tr>
+                            <td class="sub-title" style="background-color: rgb(243, 243, 243);">Cómo califica la calidad humana</td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_humana" id="exampleRadios1" value="1" ></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_humana" id="exampleRadios1" value="2" ></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_humana" id="exampleRadios1" value="3" ></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_humana" id="exampleRadios1" value="4" ></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

@@ -34,8 +34,8 @@
             <tr>
                 <td class="sub-title left-field">Fecha del servicio:</td>
                 <td id="fecha-servicio" class="left-field">{{data[0]}}</td>
-                <td class="sub-title">Hora inicial:</td>
-                <td class="sub-title">Hora final:</td>
+                <td class="sub-title">Hora inicial: 8:00 AM</td>
+                <td class="sub-title">Hora final: 1:00 PM</td>
             </tr>
             <tr>
                 <td class="sub-title left-field">Nombre Ingeniero / Técnico</td>
@@ -64,7 +64,7 @@
                 <td colspan="4" class="title">Motivo del servicio</td>
             </tr>
             <tr>
-                <td colspan="4" id="text-field">{{data[7]}}</td>
+                <td colspan="4" id="text-field" style="text-align: center; font-size: 20px;">{{data[7]}}</td>
             </tr>
         </table>
 
@@ -99,7 +99,7 @@
                 <th colspan="4" style="text-align: center;">Diagnostico</th>
             </tr>
             <tr>
-                <td colspan="4" id="diagnostico-field" style="height: 390px;">{{data[8]}}</td>
+                <td colspan="4" id="diagnostico-field" style="height: 390px; text-align: center; font-size: 20px;">{{data[8]}}</td>
             </tr>
             <tr>
                 <th colspan="4" style="text-align: center;">Evidencias</th>
@@ -152,31 +152,31 @@
             </tr>
             <tr>
                 <td class="sub-title">La solución de su solicitud fue satisfactoria</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{% if data[10] == "1": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                <td>{% if data[10] == "2": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                <td>{% if data[10] == "3": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                <td>{% if data[10] == "4": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
             </tr>
             <tr>
                 <td class="sub-title">Tiempo de respuesta del servicio</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{% if data[11] == "1": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                <td>{% if data[11] == "2": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                <td>{% if data[11] == "3": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                <td>{% if data[11] == "4": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
             </tr>
             <tr>
                 <td class="sub-title">Cómo califica la calidad técnica</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{% if data[12] == "1": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                <td>{% if data[12] == "2": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                <td>{% if data[12] == "3": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                <td>{% if data[12] == "4": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
             </tr>
             <tr>
                 <td class="sub-title">Cómo califica la calidad humana</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{% if data[13] == "1": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                <td>{% if data[13] == "2": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                <td>{% if data[13] == "3": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                <td>{% if data[13] == "4": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
             </tr>
         </table>
 
@@ -190,7 +190,7 @@
             </tr>
         </table>
 
-        <hr id="line">
+        <hr id="line" style="margin-top: -10px;">
     
         <div class="footer-text">
             <span style="text-decoration: underline;">www.infotechdecolombia.com</span>

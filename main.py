@@ -21,8 +21,8 @@ def acta_servicios():
     mservice = request.form.get("mservice")
     diagnostico = request.form.get("diagnostico")
     
+    # Se extraen todas las imagenes, se guardan localmente y se almacenan en una variable de tipo lista
     evidencia = request.files.getlist("evidencia")
-
     imgs = []
 
     if len(evidencia) > 0:
@@ -35,7 +35,12 @@ def acta_servicios():
                 imgs.append(img_hash)
                 count+=1
 
-    return render_template('acta-servicios.html', data=[fecha_servicio, nombre_ing, nombre_client, sede, nombre_user, tel, ticket, mservice, diagnostico, imgs])
+    satisfaccion = request.form.get("satisfaccion")
+    tiempo_respuesta = request.form.get("tiempo_respuesta")
+    calidad_tecnica = request.form.get("calidad_tecnica")
+    calidad_humana = request.form.get("calidad_humana")
+
+    return render_template('acta-servicios.html', data=[fecha_servicio, nombre_ing, nombre_client, sede, nombre_user, tel, ticket, mservice, diagnostico, imgs, satisfaccion, tiempo_respuesta, calidad_tecnica, calidad_humana])
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug = True, host="0.0.0.0")

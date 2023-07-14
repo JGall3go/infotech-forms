@@ -20,3 +20,13 @@ body {
     width: 200px;
     height: 100px;
 }
+
+.table {
+    background-color: rgb(255, 255, 255);
+    font-size: 11px;
+}
+
+.check-input-field input{
+    align-items: center;
+    margin-left: 10px;
+}

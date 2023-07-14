@@ -19,7 +19,7 @@ doc.html(page1, {
                     callback: function (doc) {
                         // Save the PDF
                         doc.save("acta-de-servicios.pdf");
-                        window.location.replace("/");
+                       window.location.replace("/");
                     },
                     x: 0,
                     y: 595,
