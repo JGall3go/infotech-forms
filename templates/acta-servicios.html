@@ -105,7 +105,11 @@
                 <th colspan="4" style="text-align: center;">Evidencias</th>
             </tr>
             <tr>
-                <td colspan="4" id="evidencias-field" style="height: 400px;">{{data[9]}}</td>
+                <td colspan="4" id="evidencias-field" style="height: 400px;">
+                    {%for x in data[9]%}
+                        <img src="{{ url_for('static',filename='evidences/{}.png'.format(x) ) }}">
+                    {%endfor%}
+                </td>
             </tr>
         </table>
 

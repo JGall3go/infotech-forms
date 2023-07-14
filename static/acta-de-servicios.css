@@ -67,6 +67,19 @@ th {
     align-items: center;
 }
 
+#evidencias-field {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: 100px;
+    justify-content: center;
+}
+
+#evidencias-field img {
+    width: 200px;
+    height: 100px;
+}
+
 #ACTA-DE-SERVICIOS-PG2 {
     max-width: calc(827px - 70px);
     /* max-height: calc(1054px - 20px); */

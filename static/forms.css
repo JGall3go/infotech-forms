@@ -8,3 +8,15 @@ body {
     background-color: rgb(230, 230, 230);
     padding: 20px;
 }
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.img-container img {
+    width: 200px;
+    height: 100px;
+}

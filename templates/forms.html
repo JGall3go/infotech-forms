@@ -13,6 +13,9 @@
 <body>
 
     <div class="form-container">
+
+        <div class="img-container"><img src="/static/infotechlogo.png"></div>
+        
         <form action="/acta-servicios" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">Fecha de Servicio</label>
@@ -52,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Evidencia</label>
-                <input type="file" class="form-control-file" name="evidencia" accept="image/*">
+                <input type="file" class="form-control-file" name="evidencia" accept="image/*" multiple>
               </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
