@@ -1,0 +1,70 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.login-container {
+    width: 400px;
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(225, 225, 225);
+}
+
+.login-container img {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .login-container {
+        width: 300px;
+    }
+
+}
+
+.form-group {
+    width: 100%;
+}
+
+label {
+    color: rgb(122, 122, 122);
+    font-weight: bold;
+}
+
+.submit-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(114, 193, 114);
+    border: 1px solid transparent;
+}
+
+.submit-button:hover {
+    background-color: rgb(98, 178, 98);
+    border: 1px solid transparent;
+}
+
+.password-recovery {
+    color: rgb(114, 193, 114);
+    cursor: pointer;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+}
+
+.password-recovery:hover {
+    color: rgb(98, 178, 98);
+    text-decoration: underline;
+}

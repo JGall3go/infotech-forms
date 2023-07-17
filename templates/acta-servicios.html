@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/static/acta-de-servicios.css">
+    <link rel="stylesheet" href="/static/css/acta-de-servicios.css">
 </head>
 
 <body>
@@ -107,7 +107,7 @@
             <tr>
                 <td colspan="4" id="evidencias-field" style="height: 400px;">
                     {%for x in data[9]%}
-                        <img src="{{ url_for('static',filename='evidences/{}.png'.format(x) ) }}">
+                    <img src="{{ url_for('static',filename='evidences/{}.png'.format(x) ) }}">
                     {%endfor%}
                 </td>
             </tr>

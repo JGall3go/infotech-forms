@@ -1,8 +1,16 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, session, url_for, redirect
+from pymongo import MongoClient
 import random
 import os
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
+
+# Database
+client = MongoClient('mongodb://localhost:27017/') 
+db = client['InfoTechForms']
+
+# Session vars
+app.secret_key = "super secret key"
 
 @app.route('/')
 def hello():
@@ -42,5 +50,36 @@ def acta_servicios():
 
     return render_template('acta-servicios.html', data=[fecha_servicio, nombre_ing, nombre_client, sede, nombre_user, tel, ticket, mservice, diagnostico, imgs, satisfaccion, tiempo_respuesta, calidad_tecnica, calidad_humana])
 
+@app.route('/login')
+def login():
+
+    return render_template('login.html')
+
+@app.post('/login')
+def login_post():
+
+    username = request.form.get("username")
+    password = request.form.get("password")
+
+    user = db["Users"].find_one({"username": username, "password": str(password)})
+
+    if user:
+        session["username"] = username
+        return redirect(url_for("control_panel"))
+    else:
+        return redirect(url_for("login"))
+
+@app.route('/control-panel')
+def control_panel():
+
+    if "username" in session:
+
+        username = session["username"]
+        return render_template("control-panel.html", username=username)
+    
+    else:
+        return redirect(url_for("login"))
+
 if __name__ == '__main__':
+
     app.run(debug = True, host="0.0.0.0")
