@@ -48,7 +48,7 @@ def acta_servicios():
     calidad_tecnica = request.form.get("calidad_tecnica")
     calidad_humana = request.form.get("calidad_humana")
 
-    return render_template('acta-servicios.html', data=[fecha_servicio, nombre_ing, nombre_client, sede, nombre_user, tel, ticket, mservice, diagnostico, imgs, satisfaccion, tiempo_respuesta, calidad_tecnica, calidad_humana])
+    return render_template('user_templates/soporteti/acta-servicios.html', data=[fecha_servicio, nombre_ing, nombre_client, sede, nombre_user, tel, ticket, mservice, diagnostico, imgs, satisfaccion, tiempo_respuesta, calidad_tecnica, calidad_humana])
 
 @app.route('/login')
 def login():
@@ -75,10 +75,41 @@ def control_panel():
     if "username" in session:
 
         username = session["username"]
-        return render_template("control-panel.html", username=username)
+        user = db["Users"].find_one({"username": username})
+        forms_list = user["forms-list"]
+
+        return render_template("control-panel.html", username=username, forms_list=forms_list)
     
     else:
         return redirect(url_for("login"))
+
+@app.route('/control-panel/forms/<form>')
+def control_panel_form(form):
+
+    if "username" in session:
+
+        username = session["username"]
+        user = db["Users"].find_one({"username": username})
+        forms_list = user["forms-list"]
+        form_name = forms_list[form]
+
+        if form in forms_list:
+
+            return render_template(f'user_templates/{username}/{form}.html', data="", username=username, form=form_name)
+        
+        else:
+
+            return "No tienes permiso para ver este formulario!!"
+    
+    else:
+        return redirect(url_for("login"))
+
+@app.route('/log-out')
+def log_out():
+
+    session.pop("username", None)
+
+    return redirect(url_for("login"))
 
 if __name__ == '__main__':
 

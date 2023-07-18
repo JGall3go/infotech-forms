@@ -6,198 +6,237 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/static/css/acta-de-servicios.css">
+    <link rel="stylesheet" href="/static/user_static/Soporteti/acta-servicios.css">
 </head>
 
 <body>
 
-    <div id="ACTA-DE-SERVICIOS-PG1">
+    <header>
+        <div class="header-container">
+            <img src="/static/infotechlogo.png" class="infotech-logo" width="115px" height="50px">
+            <div class="title-container">
+                <span>{{form}}</span>
+                <div class="breadcrumbs">
+                    <a href="/control-panel">Control Panel</a>
+                </div>
+            </div>
+            <div class="profile-container">
+                <span class="username-span">{{username}}</span>
+                <a href="/log-out"><img src="/static/user.jpg" class="user-logo" width="40px" height="40px"></a>
+            </div>
+        </div>
+        </div>
+    </header>
 
-        <table id="cabecera">
-            <tr>
-                <th rowspan="2" class="left-field img-field"><img src="/static/infotechlogo.png"></th>
-                <th style="height: 15px;">PROCESO GESTION TI</th>
-                <th style="height: 15px;">F2.GEST.TI</th>
-                <th style="height: 15px;">01/05/2019</th>
-            </tr>
-            <tr>
-                <td>ACTA DE SERVICIO</td>
-                <td>Versión 2</td>
-                <td>Página 1 de 3</td>
-            </tr>
-        </table>
+    <div class="content">
+        <div id="ACTA-DE-SERVICIOS-PG1">
 
-        <table id="orden-de-servicio">
-            <tr>
-                <th colspan="4" class="title" style="height: 50px;">ORDEN DE SERVICIO</th>
-            </tr>
-            <tr>
-                <td class="sub-title left-field">Fecha del servicio:</td>
-                <td id="fecha-servicio" class="left-field">{{data[0]}}</td>
-                <td class="sub-title">Hora inicial: 8:00 AM</td>
-                <td class="sub-title">Hora final: 1:00 PM</td>
-            </tr>
-            <tr>
-                <td class="sub-title left-field">Nombre Ingeniero / Técnico</td>
-                <td colspan="3" id="nombre-ing">{{data[1]}}</td>
-            </tr>
-            <tr>
-                <td class="sub-title left-field">Nombre Cliente:</td>
-                <td colspan="3" id="nombre-cliente">{{data[2]}}</td>
-            </tr>
-            <tr>
-                <td class="sub-title left-field">Sede:</td>
-                <td colspan="3" id="sede">{{data[3]}}</td>
-            </tr>
-            <tr>
-                <td class="sub-title left-field">Nombre de Usuario:</td>
-                <td colspan="2" id="nombre-usuario">{{data[4]}}</td>
-                <td id="tel">Tel. {{data[5]}}</td>
-            </tr>
-            <tr>
-                <td class="sub-title left-field">Ticket INFOTECH:</td>
-                <td class="left-field">{{data[6]}}</td>
-                <td class="sub-title">Dependencia</td>
-                <td>Tecnología & Servicios</td>
-            </tr>
-            <tr>
-                <td colspan="4" class="title">Motivo del servicio</td>
-            </tr>
-            <tr>
-                <td colspan="4" id="text-field" style="text-align: center; font-size: 20px;">{{data[7]}}</td>
-            </tr>
-        </table>
+            <table id="cabecera">
+                <tr>
+                    <th rowspan="2" class="left-field img-field"><img src="/static/infotechlogo.png"></th>
+                    <th style="height: 15px;">PROCESO GESTION TI</th>
+                    <th style="height: 15px;">F2.GEST.TI</th>
+                    <th style="height: 15px;">01/05/2019</th>
+                </tr>
+                <tr>
+                    <td>ACTA DE SERVICIO</td>
+                    <td>Versión 2</td>
+                    <td>Página 1 de 3</td>
+                </tr>
+            </table>
 
-        <hr id="line">
+            <table id="orden-de-servicio">
+                <tr>
+                    <th colspan="4" class="title" style="height: 50px;">ORDEN DE SERVICIO</th>
+                </tr>
+                <tr>
+                    <td class="sub-title left-field">Fecha del servicio:</td>
+                    <td id="fecha-servicio" class="left-field">{{data[0]}}</td>
+                    <td class="sub-title">Hora inicial: 8:00 AM</td>
+                    <td class="sub-title">Hora final: 1:00 PM</td>
+                </tr>
+                <tr>
+                    <td class="sub-title left-field">Nombre Ingeniero / Técnico</td>
+                    <td colspan="3" id="nombre-ing">{{data[1]}}</td>
+                </tr>
+                <tr>
+                    <td class="sub-title left-field">Nombre Cliente:</td>
+                    <td colspan="3" id="nombre-cliente">{{data[2]}}</td>
+                </tr>
+                <tr>
+                    <td class="sub-title left-field">Sede:</td>
+                    <td colspan="3" id="sede">{{data[3]}}</td>
+                </tr>
+                <tr>
+                    <td class="sub-title left-field">Nombre de Usuario:</td>
+                    <td colspan="2" id="nombre-usuario">{{data[4]}}</td>
+                    <td id="tel">Tel. {{data[5]}}</td>
+                </tr>
+                <tr>
+                    <td class="sub-title left-field">Ticket INFOTECH:</td>
+                    <td class="left-field">{{data[6]}}</td>
+                    <td class="sub-title">Dependencia</td>
+                    <td>Tecnología & Servicios</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="title">Motivo del servicio</td>
+                </tr>
+                <tr>
+                    <td colspan="4" id="text-field" style="text-align: center; font-size: 20px;">{{data[7]}}</td>
+                </tr>
+            </table>
 
-        <div class="footer-text">
-            <span style="text-decoration: underline;">www.infotechdecolombia.com</span>
-            <span>Carrera 100 no. 11-90 Holguines Trade Center, Torre Valle del Lili, Of. 605 - PBX (572) 4863636</span>
-            <span>Cali - Colombia</span>
+            <hr id="line">
+
+            <div class="footer-text">
+                <span style="text-decoration: underline;">www.infotechdecolombia.com</span>
+                <span>Carrera 100 no. 11-90 Holguines Trade Center, Torre Valle del Lili, Of. 605 - PBX (572)
+                    4863636</span>
+                <span>Cali - Colombia</span>
+            </div>
+
         </div>
 
-    </div>
+        <div id="ACTA-DE-SERVICIOS-PG2">
 
-    <div id="ACTA-DE-SERVICIOS-PG2">
+            <table id="cabecera">
+                <tr>
+                    <th rowspan="2" class="left-field img-field"><img src="/static/infotechlogo.png"></th>
+                    <th style="height: 15px;">PROCESO GESTION TI</th>
+                    <th style="height: 15px;">F2.GEST.TI</th>
+                    <th style="height: 15px;">01/05/2019</th>
+                </tr>
+                <tr>
+                    <td>ACTA DE SERVICIO</td>
+                    <td>Versión 2</td>
+                    <td>Página 2 de 3</td>
+                </tr>
+            </table>
 
-        <table id="cabecera">
-            <tr>
-                <th rowspan="2" class="left-field img-field"><img src="/static/infotechlogo.png"></th>
-                <th style="height: 15px;">PROCESO GESTION TI</th>
-                <th style="height: 15px;">F2.GEST.TI</th>
-                <th style="height: 15px;">01/05/2019</th>
-            </tr>
-            <tr>
-                <td>ACTA DE SERVICIO</td>
-                <td>Versión 2</td>
-                <td>Página 2 de 3</td>
-            </tr>
-        </table>
+            <table id="cuerpo">
+                <tr>
+                    <th colspan="4" style="text-align: center;">Diagnostico</th>
+                </tr>
+                <tr>
+                    <td colspan="4" id="diagnostico-field" style="height: 390px; text-align: center; font-size: 20px;">
+                        {{data[8]}}</td>
+                </tr>
+                <tr>
+                    <th colspan="4" style="text-align: center;">Evidencias</th>
+                </tr>
+                <tr>
+                    <td colspan="4" id="evidencias-field" style="height: 400px;">
+                        {%for x in data[9]%}
+                        <img src="{{ url_for('static',filename='evidences/{}.png'.format(x) ) }}">
+                        {%endfor%}
+                    </td>
+                </tr>
+            </table>
 
-        <table id="cuerpo">
-            <tr>
-                <th colspan="4" style="text-align: center;">Diagnostico</th>
-            </tr>
-            <tr>
-                <td colspan="4" id="diagnostico-field" style="height: 390px; text-align: center; font-size: 20px;">{{data[8]}}</td>
-            </tr>
-            <tr>
-                <th colspan="4" style="text-align: center;">Evidencias</th>
-            </tr>
-            <tr>
-                <td colspan="4" id="evidencias-field" style="height: 400px;">
-                    {%for x in data[9]%}
-                    <img src="{{ url_for('static',filename='evidences/{}.png'.format(x) ) }}">
-                    {%endfor%}
-                </td>
-            </tr>
-        </table>
+            <hr id="line">
 
-        <hr id="line">
-    
-        <div class="footer-text">
-            <span style="text-decoration: underline;">www.infotechdecolombia.com</span>
-            <span>Carrera 100 no. 11-90 Holguines Trade Center, Torre Valle del Lili, Of. 605 - PBX (572) 4863636</span>
-            <span>Cali - Colombia</span>
+            <div class="footer-text">
+                <span style="text-decoration: underline;">www.infotechdecolombia.com</span>
+                <span>Carrera 100 no. 11-90 Holguines Trade Center, Torre Valle del Lili, Of. 605 - PBX (572)
+                    4863636</span>
+                <span>Cali - Colombia</span>
+            </div>
+
         </div>
 
-    </div>
+        <div id="ACTA-DE-SERVICIOS-PG3">
 
-    <div id="ACTA-DE-SERVICIOS-PG3">
+            <table id="cabecera">
+                <tr>
+                    <th rowspan="2" class="left-field img-field"><img src="/static/infotechlogo.png"></th>
+                    <th style="height: 15px;">PROCESO GESTION TI</th>
+                    <th style="height: 15px;">F2.GEST.TI</th>
+                    <th style="height: 15px;">01/05/2019</th>
+                </tr>
+                <tr>
+                    <td>ACTA DE SERVICIO</td>
+                    <td>Versión 2</td>
+                    <td>Página 3 de 3</td>
+                </tr>
+            </table>
 
-        <table id="cabecera">
-            <tr>
-                <th rowspan="2" class="left-field img-field"><img src="/static/infotechlogo.png"></th>
-                <th style="height: 15px;">PROCESO GESTION TI</th>
-                <th style="height: 15px;">F2.GEST.TI</th>
-                <th style="height: 15px;">01/05/2019</th>
-            </tr>
-            <tr>
-                <td>ACTA DE SERVICIO</td>
-                <td>Versión 2</td>
-                <td>Página 3 de 3</td>
-            </tr>
-        </table>
+            <table id="cuerpo">
+                <tr>
+                    <th colspan="5" style="text-align: center;">Evaluación del Servicio</th>
+                </tr>
+                <tr>
+                    <th style="text-align: center;"></th>
+                    <th style="text-align: center;">Excelente</th>
+                    <th style="text-align: center;">Bueno</th>
+                    <th style="text-align: center;">Regular</th>
+                    <th style="text-align: center;">Malo</th>
+                </tr>
+                <tr>
+                    <td class="sub-title">La solución de su solicitud fue satisfactoria</td>
+                    <td>{% if data[10] == "1": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                    <td>{% if data[10] == "2": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                    <td>{% if data[10] == "3": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                    <td>{% if data[10] == "4": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                </tr>
+                <tr>
+                    <td class="sub-title">Tiempo de respuesta del servicio</td>
+                    <td>{% if data[11] == "1": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                    <td>{% if data[11] == "2": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                    <td>{% if data[11] == "3": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                    <td>{% if data[11] == "4": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                </tr>
+                <tr>
+                    <td class="sub-title">Cómo califica la calidad técnica</td>
+                    <td>{% if data[12] == "1": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                    <td>{% if data[12] == "2": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                    <td>{% if data[12] == "3": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                    <td>{% if data[12] == "4": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                </tr>
+                <tr>
+                    <td class="sub-title">Cómo califica la calidad humana</td>
+                    <td>{% if data[13] == "1": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                    <td>{% if data[13] == "2": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                    <td>{% if data[13] == "3": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                    <td>{% if data[13] == "4": %}<img src="/static/checkmark.png"
+                            style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
+                </tr>
+            </table>
 
-        <table id="cuerpo">
-            <tr>
-                <th colspan="5" style="text-align: center;">Evaluación del Servicio</th>
-            </tr>
-            <tr>
-                <th style="text-align: center;"></th>
-                <th style="text-align: center;">Excelente</th>
-                <th style="text-align: center;">Bueno</th>
-                <th style="text-align: center;">Regular</th>
-                <th style="text-align: center;">Malo</th>
-            </tr>
-            <tr>
-                <td class="sub-title">La solución de su solicitud fue satisfactoria</td>
-                <td>{% if data[10] == "1": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-                <td>{% if data[10] == "2": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-                <td>{% if data[10] == "3": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-                <td>{% if data[10] == "4": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-            </tr>
-            <tr>
-                <td class="sub-title">Tiempo de respuesta del servicio</td>
-                <td>{% if data[11] == "1": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-                <td>{% if data[11] == "2": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-                <td>{% if data[11] == "3": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-                <td>{% if data[11] == "4": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-            </tr>
-            <tr>
-                <td class="sub-title">Cómo califica la calidad técnica</td>
-                <td>{% if data[12] == "1": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-                <td>{% if data[12] == "2": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-                <td>{% if data[12] == "3": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-                <td>{% if data[12] == "4": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-            </tr>
-            <tr>
-                <td class="sub-title">Cómo califica la calidad humana</td>
-                <td>{% if data[13] == "1": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-                <td>{% if data[13] == "2": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-                <td>{% if data[13] == "3": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-                <td>{% if data[13] == "4": %}<img src="/static/checkmark.png" style="width: 30px; height: 30px; margin-left: 20px;">{% endif %}</td>
-            </tr>
-        </table>
+            <table style="margin-bottom: 520px;">
+                <tr>
+                    <th colspan="2" style="text-align: center;">Firmas:</th>
+                </tr>
+                <tr style="height: 150px;">
+                    <td style="text-align: center;"><span>Usuario: Firma y Sello</span></td>
+                    <td style="text-align: center;"><span>Ingeniero/Técnico:</span></td>
+                </tr>
+            </table>
 
-        <table style="margin-bottom: 520px;">
-            <tr>
-                <th colspan="2" style="text-align: center;">Firmas:</th>
-            </tr>
-            <tr style="height: 150px;">
-                <td style="text-align: center;"><span>Usuario: Firma y Sello</span></td>
-                <td style="text-align: center;"><span>Ingeniero/Técnico:</span></td>
-            </tr>
-        </table>
+            <hr id="line" style="margin-top: -10px;">
 
-        <hr id="line" style="margin-top: -10px;">
-    
-        <div class="footer-text">
-            <span style="text-decoration: underline;">www.infotechdecolombia.com</span>
-            <span>Carrera 100 no. 11-90 Holguines Trade Center, Torre Valle del Lili, Of. 605 - PBX (572) 4863636</span>
-            <span>Cali - Colombia</span>
+            <div class="footer-text">
+                <span style="text-decoration: underline;">www.infotechdecolombia.com</span>
+                <span>Carrera 100 no. 11-90 Holguines Trade Center, Torre Valle del Lili, Of. 605 - PBX (572)
+                    4863636</span>
+                <span>Cali - Colombia</span>
+            </div>
+
         </div>
-
     </div>
 
     <!-- html2canvas library -->

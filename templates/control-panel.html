@@ -22,10 +22,10 @@
                 </div>
             </div>
             <div class="profile-container">
-                <span class="username-span">Username</span>
-                <img src="/static/user.jpg" class="user-logo" width="40px" height="40px">
+                <span class="username-span">{{username}}</span>
+                <a href="/log-out"><img src="/static/user.jpg" class="user-logo" width="40px" height="40px"></a>
             </div>
-            
+            </div>
         </div>
     </header>
 
@@ -35,14 +35,23 @@
             <div class="breadcrumb-bar"></div>
         </div>
         <div class="forms-container">
-            <div class="form">
-    
-            </div>
+            {%for form in forms_list%}
+                <a href="/control-panel/forms/{{form}}" class="form" style="background-image: url('static/user_static/Soporteti/{{form}}.png'); background-position: center; background-size: cover; text-decoration: none;">
+                    <div class="form-data">
+                        <span>{{forms_list[form]}}</span>
+                        <div class="form-buttons">
+                            <span class="button-form"><ion-icon name="document-text-outline"></ion-icon></span>
+                            <span class="button-see"><ion-icon name="eye-outline"></ion-icon></span>
+                            <span class="button-download"><ion-icon name="download-outline"></ion-icon></span>
+                        </div>
+                    </div>
+                </a>
+            {%endfor%}
+            
             <div class="form-add-new">
                 <ion-icon name="add-circle-outline" class="add-icon"></ion-icon>
                 <span>Add One</span>
                 <span>Coming Soon</span>
-    
             </div>
         </div>
     </div>
@@ -59,6 +68,8 @@
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+    <script src="/static/js/animations.js"></script>
 
 </body>
 
