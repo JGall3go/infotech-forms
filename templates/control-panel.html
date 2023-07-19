@@ -7,7 +7,7 @@
     <title>Panel</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/cpanel.css">
+    <link rel="stylesheet" href="/static/css/control-panel.css">
 </head>
 
 <body>
@@ -18,12 +18,12 @@
             <div class="input-group mb-3 search-bar">
                 <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Search...">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-outline-secondary">Search</button>
+                    <button type="button" class="btn button-search">Search</button>
                 </div>
             </div>
             <div class="profile-container">
                 <span class="username-span">{{username}}</span>
-                <a href="/log-out"><img src="/static/user.jpg" class="user-logo" width="40px" height="40px"></a>
+                <a href="/log-out"><img src="/static/user.png" class="user-logo" width="40px" height="40px" style="padding: 5px;"></a>
             </div>
             </div>
         </div>
@@ -36,16 +36,17 @@
         </div>
         <div class="forms-container">
             {%for form in forms_list%}
-                <a href="/control-panel/forms/{{form}}" class="form" style="background-image: url('static/user_static/Soporteti/{{form}}.png'); background-position: center; background-size: cover; text-decoration: none;">
+                <div class="form" style="background-image: url('static/user_static/Soporteti/{{form}}.png'); background-position: center; background-size: cover; text-decoration: none; z-index: 1;">
                     <div class="form-data">
-                        <span>{{forms_list[form]}}</span>
+                        <span class="form-title">{{forms_list[form]}}</span>
                         <div class="form-buttons">
-                            <span class="button-form"><ion-icon name="document-text-outline"></ion-icon></span>
-                            <span class="button-see"><ion-icon name="eye-outline"></ion-icon></span>
-                            <span class="button-download"><ion-icon name="download-outline"></ion-icon></span>
+                            <ion-icon onclick="location.href = '/control-panel/forms/{{form}}/post';" class="button-form" name="document-text-outline" style="z-index: 2;"></ion-icon>
+                            <ion-icon onclick="location.href = '/control-panel/forms/{{form}}';" class="button-see" name="eye-outline"></ion-icon>
+                            <ion-icon onclick="location.href = '/control-panel/forms/';" class="button-download" name="download-outline"></ion-icon>
+                            <ion-icon class="button-logs" name="file-tray-full-outline"></ion-icon>
                         </div>
                     </div>
-                </a>
+                </div>
             {%endfor%}
             
             <div class="form-add-new">

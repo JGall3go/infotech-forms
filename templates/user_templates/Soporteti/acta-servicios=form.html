@@ -14,9 +14,11 @@
 
     <div class="form-container">
 
+        <a href="/control-panel" class="go-back">Control Panel</a>
+        
         <div class="img-container"><img src="/static/infotechlogo.png"></div>
         
-        <form action="/acta-servicios" method="post" enctype="multipart/form-data">
+        <form action="/control-panel/forms/acta-servicios/post" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">Fecha de Servicio</label>
                 <input type="date" class="form-control" name="fservicio" aria-describedby="emailHelp">
@@ -103,7 +105,8 @@
                 </table>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn submit-button" style="color: aliceblue;">Submit</button>
+            <span class="btn cancel-button" onclick="location.href = '/control-panel';" style="color: aliceblue;">Cancel</span>
         </form>
     </div>
 

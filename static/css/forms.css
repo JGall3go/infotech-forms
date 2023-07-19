@@ -30,3 +30,39 @@ body {
     align-items: center;
     margin-left: 10px;
 }
+
+.submit-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(114, 193, 114);
+    border: 1px solid transparent;
+}
+
+.submit-button:hover {
+    background-color: rgb(98, 178, 98);
+    border: 1px solid transparent;
+}
+
+.go-back {
+    color: rgb(114, 193, 114);
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+}
+
+.go-back:hover {
+    color: rgb(98, 178, 98);
+    text-decoration: underline;
+}
+
+.cancel-button {
+    background-color: rgb(175, 62, 62);
+    border: 1px solid rgb(175, 62, 62);
+}
+
+.cancel-button:hover {
+    background-color: rgb(145, 52, 52);
+    border: 1px solid rgb(145, 52, 52);
+}

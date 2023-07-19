@@ -45,7 +45,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 130px;
+    width: 115px;
 }
 
 .user-logo {
@@ -67,11 +67,16 @@ header {
     align-items: center;
 }
 
+.title-container span {
+    font-weight: 600;
+    color: #494949;
+}
+
 .breadcrumbs {
     color: #868686;
     display: flex;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .breadcrumbs a{

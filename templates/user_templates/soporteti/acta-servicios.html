@@ -22,7 +22,7 @@
             </div>
             <div class="profile-container">
                 <span class="username-span">{{username}}</span>
-                <a href="/log-out"><img src="/static/user.jpg" class="user-logo" width="40px" height="40px"></a>
+                <a href="/log-out"><img src="/static/user.png" class="user-logo" width="30px" height="30px" style="padding: 5px;"></a>
             </div>
         </div>
         </div>
@@ -126,9 +126,11 @@
                 </tr>
                 <tr>
                     <td colspan="4" id="evidencias-field" style="height: 400px;">
-                        {%for x in data[9]%}
-                        <img src="{{ url_for('static',filename='evidences/{}.png'.format(x) ) }}">
-                        {%endfor%}
+                        {% if data[9]|length > 0 %}
+                            {%for x in data[9]%}
+                                <img src="{{ url_for('static',filename='evidences/{}.png'.format(x) ) }}">
+                            {%endfor%}
+                        {% endif %}
                     </td>
                 </tr>
             </table>
@@ -243,7 +245,7 @@
     <script src="/static/js/html2canvas.min.js"></script>
     <!-- jsPDF library -->
     <script src="/static/js/jsPDF/dist/jspdf.umd.js"></script>
-    <script src="/static/pdf.js"></script>
+    <script src="/static/user_static/Soporteti/pdf.js"></script>
 </body>
 
 </html>
