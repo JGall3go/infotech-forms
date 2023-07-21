@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{form}}</title>
 
+    <link rel="icon" type="image/png" href="/static/favicon.png"/>
     <link rel="stylesheet" href="/static/user_static/Soporteti/acta-servicios.css">
 </head>
 
@@ -17,12 +18,13 @@
             <div class="title-container">
                 <span>{{form}}</span>
                 <div class="breadcrumbs">
-                    <a href="/control-panel">Control Panel</a>
+                    <a href="/dashboard">Dashboard</a>
                 </div>
             </div>
             <div class="profile-container">
                 <span class="username-span">{{username}}</span>
-                <a href="/log-out"><img src="/static/user.png" class="user-logo" width="30px" height="30px" style="padding: 5px;"></a>
+                <a href="/log-out"><img src="/static/user.png" class="user-logo" width="30px" height="30px"
+                        style="padding: 5px;"></a>
             </div>
         </div>
         </div>
@@ -127,9 +129,9 @@
                 <tr>
                     <td colspan="4" id="evidencias-field" style="height: 400px;">
                         {% if data[9]|length > 0 %}
-                            {%for x in data[9]%}
-                                <img src="{{ url_for('static',filename='evidences/{}.png'.format(x) ) }}">
-                            {%endfor%}
+                        {%for x in data[9]%}
+                        <img src="{{ url_for('static',filename='evidences/{}.png'.format(x) ) }}">
+                        {%endfor%}
                         {% endif %}
                     </td>
                 </tr>
@@ -245,7 +247,56 @@
     <script src="/static/js/html2canvas.min.js"></script>
     <!-- jsPDF library -->
     <script src="/static/js/jsPDF/dist/jspdf.umd.js"></script>
-    <script src="/static/user_static/Soporteti/pdf.js"></script>
+
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+
+        var doc = new jsPDF();
+
+        // Source HTMLElement or a string containing HTML.
+        var page1 = document.querySelector("#ACTA-DE-SERVICIOS-PG1");
+        var page2 = document.querySelector("#ACTA-DE-SERVICIOS-PG2");
+        var page3 = document.querySelector("#ACTA-DE-SERVICIOS-PG3");
+
+        doc.html(page1, {
+            callback: function (doc) {
+
+                doc.addPage();
+                // Another process
+                doc.html(page2, {
+                    callback: function (doc) {
+                        // Save the PDF
+                        doc.html(page3, {
+                            callback: function (doc) {
+                                // Save the PDF
+                                // {% if form_download %}
+                                doc.save("acta-de-servicios.pdf");
+                                // {% endif %}
+                                // window.location.replace("/");
+                            },
+                            x: 0,
+                            y: 595,
+                            width: 210, //target width in the PDF document
+                            windowWidth: 827, //window width in CSS pixels
+                            height: 279
+                        });
+                    },
+                    x: 0,
+                    y: 298,
+                    width: 210, //target width in the PDF document
+                    windowWidth: 827, //window width in CSS pixels
+                    height: 279
+                });
+
+            },
+            x: 0,
+            y: 0,
+            width: 210, //target width in the PDF document
+            windowWidth: 827, //window width in CSS pixels
+            height: 279
+        });
+    </script>
+
 </body>
 
 </html>

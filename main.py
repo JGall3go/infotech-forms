@@ -17,7 +17,7 @@ def hello():
 
     if "username" in session:
 
-        return redirect(url_for("control_panel"))
+        return redirect(url_for("dashboard"))
     
     else:
         return redirect(url_for("login"))
@@ -37,12 +37,12 @@ def login_post():
 
     if user:
         session["username"] = username
-        return redirect(url_for("control_panel"))
+        return redirect(url_for("dashboard"))
     else:
         return redirect(url_for("login"))
 
-@app.route('/control-panel')
-def control_panel():
+@app.route('/dashboard')
+def dashboard():
 
     if "username" in session:
 
@@ -50,13 +50,13 @@ def control_panel():
         user = db["Users"].find_one({"username": username})
         forms_list = user["forms-list"]
 
-        return render_template("control-panel.html", username=username, forms_list=forms_list)
+        return render_template("dashboard.html", username=username, forms_list=forms_list)
     
     else:
         return redirect(url_for("login"))
 
-@app.route('/control-panel/forms/<form>')
-def control_panel_form(form):
+@app.route('/dashboard/forms/<form>')
+def dashboard_form(form):
 
     if "username" in session:
 
@@ -67,7 +67,7 @@ def control_panel_form(form):
 
         if form in forms_list:
 
-            return render_template(f'user_templates/{username}/{form}.html', data="", username=username, form=form_name)
+            return render_template(f'user_templates/{username}/{form}.html', data="", username=username, form=form_name, form_download=False)
         
         else:
 
@@ -85,7 +85,7 @@ def log_out():
 
 # FORMS
 
-@app.route("/control-panel/forms/<form>/post", methods=['GET', 'POST'])
+@app.route("/dashboard/forms/<form>/post", methods=['GET', 'POST'])
 def form_filling(form):
 
     if "username" in session:
@@ -126,11 +126,11 @@ def form_filling(form):
             calidad_tecnica = request.form.get("calidad_tecnica")
             calidad_humana = request.form.get("calidad_humana")
 
-            return render_template('user_templates/Soporteti/acta-servicios.html', data=[fecha_servicio, nombre_ing, nombre_client, sede, nombre_user, tel, ticket, mservice, diagnostico, imgs, satisfaccion, tiempo_respuesta, calidad_tecnica, calidad_humana], username=username, form=form_name)
+            return render_template('user_templates/Soporteti/acta-servicios.html', data=[fecha_servicio, nombre_ing, nombre_client, sede, nombre_user, tel, ticket, mservice, diagnostico, imgs, satisfaccion, tiempo_respuesta, calidad_tecnica, calidad_humana], username=username, form=form_name, form_download=True)
 
         else:
 
-            return render_template(f"user_templates/{session['username']}/{form}=form.html")
+            return render_template(f"user_templates/{session['username']}/{form}=form.html", form=form_name)
     else:
         return redirect(url_for("login"))
 

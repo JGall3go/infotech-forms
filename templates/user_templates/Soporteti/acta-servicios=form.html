@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forms</title>
+    <title>{{form}}</title>
 
+    <link rel="icon" type="image/png" href="/static/favicon.png"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/forms.css">
 </head>
@@ -14,11 +15,11 @@
 
     <div class="form-container">
 
-        <a href="/control-panel" class="go-back">Control Panel</a>
+        <a href="/dashboard" class="go-back">Dashboard</a>
         
         <div class="img-container"><img src="/static/infotechlogo.png"></div>
         
-        <form action="/control-panel/forms/acta-servicios/post" method="post" enctype="multipart/form-data">
+        <form action="/dashboard/forms/acta-servicios/post" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">Fecha de Servicio</label>
                 <input type="date" class="form-control" name="fservicio" aria-describedby="emailHelp">
@@ -106,7 +107,7 @@
             </div>
 
             <button type="submit" class="btn submit-button" style="color: aliceblue;">Submit</button>
-            <span class="btn cancel-button" onclick="location.href = '/control-panel';" style="color: aliceblue;">Cancel</span>
+            <span class="btn cancel-button" onclick="location.href = '/dashboard';" style="color: aliceblue;">Cancel</span>
         </form>
     </div>
 
