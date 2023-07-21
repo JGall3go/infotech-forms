@@ -79,11 +79,11 @@ header {
 
 .breadcrumbs {
     color: #979797;
-    margin-top: 110px;
+    margin-top: 100px;
     display: flex;
     font-weight: 400;
     background-color: #ffffff;
-    padding: 10px;
+    padding: 5px 10px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
@@ -359,6 +359,37 @@ header {
     height: 100%;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    padding: 20px;
+}
+
+.most-report div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.most-report img {
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    border: 1px solid #7e7e7e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.most-report span {
+    color: #4e4e4e;
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 /* Footer */
