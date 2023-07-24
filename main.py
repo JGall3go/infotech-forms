@@ -13,7 +13,7 @@ db = client['InfoTechForms']
 app.secret_key = "super secret key"
 
 @app.route('/')
-def hello():
+def principal():
 
     if "username" in session:
 
@@ -106,6 +106,8 @@ def form_filling(form):
             ticket = request.form.get("ticket")
             mservice = request.form.get("mservice")
             diagnostico = request.form.get("diagnostico")
+            hora_inicial = request.form.get("hinicio")
+            hora_final = request.form.get("hfinal")
             
             # Se extraen todas las imagenes, se guardan localmente y se almacenan en una variable de tipo lista
             evidencia = request.files.getlist("evidencia")
@@ -126,7 +128,7 @@ def form_filling(form):
             calidad_tecnica = request.form.get("calidad_tecnica")
             calidad_humana = request.form.get("calidad_humana")
 
-            return render_template('user_templates/Soporteti/acta-servicios.html', data=[fecha_servicio, nombre_ing, nombre_client, sede, nombre_user, tel, ticket, mservice, diagnostico, imgs, satisfaccion, tiempo_respuesta, calidad_tecnica, calidad_humana], username=username, form=form_name, form_download=True)
+            return render_template('user_templates/Soporteti/acta-servicios.html', data=[fecha_servicio, nombre_ing, nombre_client, sede, nombre_user, tel, ticket, mservice, diagnostico, imgs, satisfaccion, tiempo_respuesta, calidad_tecnica, calidad_humana, hora_inicial, hora_final], username=username, form=form_name, form_download=True)
 
         else:
 

@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{form}}</title>
 
-    <link rel="icon" type="image/png" href="/static/favicon.png"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="/static/favicon.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/forms.css">
 </head>
 
@@ -16,13 +17,21 @@
     <div class="form-container">
 
         <a href="/dashboard" class="go-back">Dashboard</a>
-        
+
         <div class="img-container"><img src="/static/infotechlogo.png"></div>
-        
+
         <form action="/dashboard/forms/acta-servicios/post" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">Fecha de Servicio</label>
                 <input type="date" class="form-control" name="fservicio" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Hora de Inicio</label>
+                <input type="time" class="form-control" name="hinicio" min="8:00" max="18:00" step="600">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Hora de Finalización</label>
+                <input type="time" class="form-control" name="hfinal" min="8:00" max="18:00" step="600">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Nombre del Ingeniero/Técnico</label>
@@ -58,7 +67,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Evidencia</label>
-                <input type="file" class="form-control-file" name="evidencia" accept="image/*" multiple>
+                <input type="file" class="form-control" name="evidencia" accept="image/*" multiple>
             </div>
 
             <div class="form-group">
@@ -75,40 +84,103 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="sub-title" style="background-color: rgb(243, 243, 243);">La solución de su solicitud fue satisfactoria</td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="satisfaccion" id="exampleRadios1" value="1" ></td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="satisfaccion" id="exampleRadios1" value="2" ></td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="satisfaccion" id="exampleRadios1" value="3" ></td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="satisfaccion" id="exampleRadios1" value="4" ></td>
+                            <td class="sub-title" style="background-color: rgb(243, 243, 243);">La solución de su
+                                solicitud fue satisfactoria</td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="satisfaccion" id="exampleRadios1" value="1"></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="satisfaccion" id="exampleRadios1" value="2"></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="satisfaccion" id="exampleRadios1" value="3"></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="satisfaccion" id="exampleRadios1" value="4"></td>
                         </tr>
                         <tr>
-                            <td class="sub-title" style="background-color: rgb(243, 243, 243);">Tiempo de respuesta del servicio</td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="tiempo_respuesta" id="exampleRadios1" value="1" ></td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="tiempo_respuesta" id="exampleRadios1" value="2" ></td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="tiempo_respuesta" id="exampleRadios1" value="3" ></td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="tiempo_respuesta" id="exampleRadios1" value="4" ></td>
+                            <td class="sub-title" style="background-color: rgb(243, 243, 243);">Tiempo de respuesta del
+                                servicio</td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="tiempo_respuesta" id="exampleRadios1" value="1"></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="tiempo_respuesta" id="exampleRadios1" value="2"></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="tiempo_respuesta" id="exampleRadios1" value="3"></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="tiempo_respuesta" id="exampleRadios1" value="4"></td>
                         </tr>
                         <tr>
-                            <td class="sub-title" style="background-color: rgb(243, 243, 243);">Cómo califica la calidad técnica</td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_tecnica" id="exampleRadios1" value="1" ></td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_tecnica" id="exampleRadios1" value="2" ></td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_tecnica" id="exampleRadios1" value="3" ></td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_tecnica" id="exampleRadios1" value="4" ></td>
+                            <td class="sub-title" style="background-color: rgb(243, 243, 243);">Cómo califica la calidad
+                                técnica</td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="calidad_tecnica" id="exampleRadios1" value="1"></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="calidad_tecnica" id="exampleRadios1" value="2"></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="calidad_tecnica" id="exampleRadios1" value="3"></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="calidad_tecnica" id="exampleRadios1" value="4"></td>
                         </tr>
                         <tr>
-                            <td class="sub-title" style="background-color: rgb(243, 243, 243);">Cómo califica la calidad humana</td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_humana" id="exampleRadios1" value="1" ></td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_humana" id="exampleRadios1" value="2" ></td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_humana" id="exampleRadios1" value="3" ></td>
-                            <td class="check-input-field"><input class="form-check-input" type="radio" name="calidad_humana" id="exampleRadios1" value="4" ></td>
+                            <td class="sub-title" style="background-color: rgb(243, 243, 243);">Cómo califica la calidad
+                                humana</td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="calidad_humana" id="exampleRadios1" value="1"></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="calidad_humana" id="exampleRadios1" value="2"></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="calidad_humana" id="exampleRadios1" value="3"></td>
+                            <td class="check-input-field"><input class="form-check-input" type="radio"
+                                    name="calidad_humana" id="exampleRadios1" value="4"></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
+            <div class="form-group firms-container">
+                <div id="user-firm-container">
+                    <span>Firma</span>
+                    <span class="name">Usuario</span>
+                    <div class="form-input"></div>
+                </div>
+                <div id="tech-firm-container">
+                    <span>Firma</span>
+                    <span class="name">Técnico</span>
+                    <div class="form-input"></div>
+                </div>
+            </div>
+
             <button type="submit" class="btn submit-button" style="color: aliceblue;">Submit</button>
-            <span class="btn cancel-button" onclick="location.href = '/dashboard';" style="color: aliceblue;">Cancel</span>
+            <span class="btn cancel-button" onclick="location.href = '/dashboard';"
+                style="color: aliceblue;">Cancel</span>
         </form>
+
+    </div>
+
+    <div id="user-canvas-container">
+        <canvas id="user-firm-canvas"></canvas>
+        <div class="canvas-buttons">
+            <div>
+                <button class="save-button">Save Firm</button>
+                <button onclick="javascript:clearArea();return false;">Clear Area</button>
+            </div>
+            Line width : <select id="selWidth">
+                <option value="5" selected="selected">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+            </select>
+            Color : <select id="selColor">
+                <option value="black" selected="selected">black</option>
+                <option value="blue">blue</option>
+                <option value="red">red</option>
+                <option value="green">green</option>
+                <option value="yellow">yellow</option>
+                <option value="gray">gray</option>
+            </select>
+            <button id="cancel-firm-button">Cancel</button>
+        </div>
+    </div>
+    
+    <div id="tech-canvas-container">
+        <canvas id="tech-firm-canvas"></canvas>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -120,6 +192,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="/static/js/canvas-firm.js"></script>
 </body>
 
 </html>

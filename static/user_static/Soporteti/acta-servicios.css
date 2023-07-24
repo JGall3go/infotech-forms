@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 /* HEADER */
 
@@ -12,7 +12,6 @@ header {
     display: flex;
     justify-content: center;
     font-family: 'Roboto', sans-serif;
-
 }
 
 .header-container {
@@ -57,7 +56,7 @@ header {
 .username-span {
     color: #636363;
     margin-top: -15px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .title-container {
@@ -75,7 +74,7 @@ header {
 .breadcrumbs {
     color: #868686;
     display: flex;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
 }
 
