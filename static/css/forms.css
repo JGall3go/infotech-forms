@@ -4,10 +4,11 @@ body {
     display: flex;
     justify-content: center;
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
 
 .form-container {
-    width: 400px;
+    width: max-content;
     background-color: rgb(230, 230, 230);
     padding: 20px;
 }
