@@ -136,9 +136,9 @@ def form_filling(form):
     else:
         return redirect(url_for("login"))
 
-@app.route('/uploads/<path:filename>', methods=['GET', 'POST'])
+@app.route('/documents/<path:filename>', methods=['GET', 'POST'])
 def download(filename):
-    path = "uploads/user.jpg"
+    path = f"documents\\{session['username']}\\{filename}.pdf"
     return send_file(path, as_attachment=True)
 
 if __name__ == '__main__':

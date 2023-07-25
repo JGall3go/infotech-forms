@@ -28,7 +28,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-self: start;
-    width: 1125px;
+    width: 1024px;
     align-items: center;
 }
 
@@ -60,13 +60,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 115px;
+    width: 130px;
+    cursor: pointer;
 }
 
 .user-logo {
     border: 1px solid #8f8f8f;
     border-radius: 100%;
-    margin-top: -15px;
 }
 
 .username-span {
@@ -75,7 +75,101 @@ header {
     font-weight: 400;
 }
 
+.profile-container .tooltip-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #858585;
+    transform: translateY(-5px);
+    margin-left: -15px;
+    margin-top: -5px;
+}
+
+.profile-container div ion-icon{
+    color: #7e7e7e;
+}
+
+.tooltip-menu {
+    position: absolute;
+    height: 140px;
+    top: 0px;
+    left: -60px;
+    padding: 50px 10px 10px 10px;
+}
+
+.tooltip-menu-content {
+    height: 0px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.tooltip-menu-content a {
+    color: #5c5c5c;
+    text-align: left;
+    text-decoration: none;
+}
+
+.tooltip-menu-content a:hover {
+    color: #197C1C;
+}
+
+@media only screen and (max-width: 1200px){
+
+}
+
+@media only screen and (max-width: 600px){
+
+    header {
+        width: 100vw;
+    }
+
+    .header-container {
+        width: 100%;
+    }
+
+    .infotech-logo {
+        width: 80px;
+        height: 40px;
+    }
+
+    .control-panel-title .title {
+        color: #7e7e7e;
+        font-weight: 600;
+        font-size: 15px;
+    }
+    
+    .control-panel-title .sub-title {
+        color: #568a58;
+        font-weight: 400;
+        font-size: 11px;
+        transform: translateY(-5px);
+    }
+
+    .profile-container {
+        width: max-content;
+    }
+
+    .username-span {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 425px){
+
+}
+
 /* CONTENT */
+
+.content {
+    width: 1024px;
+}
 
 .breadcrumbs {
     color: #979797;
@@ -104,7 +198,7 @@ header {
     font-weight: 400;
     background-color: #eeeeee;
     width: max-content;
-    padding: 5px 50px;
+    padding: 5px 20px 5px 20px;
     border-radius: 10px 10px 0 0;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
@@ -217,6 +311,13 @@ header {
 .form-add-new span {
     color: #8f8f8f;
     font-weight: 500;
+    font-size: 18px;
+}
+
+.form-add-new span:last-child {
+    color: #c1c1c1;
+    font-weight: 400;
+    font-size: 15px;
 }
 
 .add-icon {
@@ -242,6 +343,55 @@ header {
 .elements-loaded-text e {
     color: #6e6e6e;
 }
+
+@media only screen and (max-width: 1200px){
+
+    .content {
+        width: 1200px;
+    }
+}
+
+@media only screen and (max-width: 600px){
+
+	.content {
+        width: max-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .breadcrumbs {
+        width: calc(100vw - 20px);
+    }
+
+    .forms-content-container {
+        width: calc(100vw - 20px);
+
+    }
+
+    .forms-container {
+        grid-template-columns: repeat(1, 200px);
+        grid-gap: 20px;
+        grid-auto-rows: 300px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .documents-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 425px){
+	.content {
+        width: max-content;
+    }
+}
+
 
 /* Reports Container */
 
@@ -347,9 +497,8 @@ header {
 }
 
 .total-email-report canvas{
-    height: 100%;
-    width: 100%;
-    margin-top: 90px;
+    margin-top: 20px;
+    height: 300px;
     border-radius: 10px;
 }
 
@@ -380,9 +529,10 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.most-report span {
+.most-report .title {
     color: #4e4e4e;
     font-weight: 600;
     font-size: 20px;
@@ -390,6 +540,35 @@ header {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    background-color: #00ff082d;
+    border-radius: 10px;
+}
+
+.most-report .document-title {
+    color: #4e4e4e;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.most-report .document-title div {
+    background-color: #bfffc1;
+    border-radius: 10px 10px 0 0;
+    transform: translateY(-40px);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+.most-report .document-title div span:last-child{
+    color: #6d6d6d;
+    font-size: 15px;
+    transform: translateY(-5px);
 }
 
 /* Footer */
@@ -410,4 +589,55 @@ header {
 
 .footer-text e {
     font-weight: 600;
+}
+
+@media only screen and (max-width: 1200px){
+    /*Tablets [601px -> 1200px]*/
+}
+@media only screen and (max-width: 600px){
+	/*Big smartphones [426px -> 600px]*/
+
+    .reports-container {
+        width: calc(100vw - 20px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .reports-container-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: max-content;
+    }
+
+    .total-post-report {
+        width: calc(100%);
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    .total-email-report {
+        width: calc(100%);
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    .most-report {
+        width: calc(100%);
+    }
+
+    .footer-text {
+        width: 100%;
+    }
+
+    .most-report .title {
+        margin-bottom: 20px;
+    }
+
+}
+@media only screen and (max-width: 425px){
+	/*Small smartphones [325px -> 425px]*/
 }

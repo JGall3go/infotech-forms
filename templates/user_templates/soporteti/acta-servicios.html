@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>{{form}}</title>
 
     <link rel="icon" type="image/png" href="/static/favicon.png"/>
@@ -270,7 +270,7 @@
                             callback: function (doc) {
                                 // Save the PDF
                                 // {% if form_download %}
-                                doc.save("acta-de-servicios.pdf");
+                                // doc.save(`acta-servicios-${makeid(5)}.pdf`);
                                 // {% endif %}
                                 // window.location.replace("/");
                             },
@@ -295,6 +295,21 @@
             windowWidth: 827, //window width in CSS pixels
             height: 279
         });
+
+        // ID Generator
+        function makeid(length) {
+
+            let result = '';
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            const charactersLength = characters.length;
+            let counter = 0;
+
+            while (counter < length) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                counter += 1;
+            }
+            return result;
+        }
     </script>
 
 </body>

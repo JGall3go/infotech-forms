@@ -2,7 +2,7 @@
 let forms = document.querySelectorAll(".form")
 
 for(let form in forms) {
-    
+
     let form_data = forms[form].querySelector(".form-data")
 
     let button_form = form_data.querySelector(".button-form")

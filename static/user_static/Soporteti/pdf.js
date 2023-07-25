@@ -18,7 +18,7 @@ doc.html(page1, {
                 doc.html(page3, {
                     callback: function (doc) {
                         // Save the PDF
-                        // doc.save("acta-de-servicios.pdf");
+                        doc.save("acta-servicios" + makeid(5) + ".pdf");
                         // window.location.replace("/");
                     },
                     x: 0,
@@ -42,5 +42,18 @@ doc.html(page1, {
     windowWidth: 827, //window width in CSS pixels
     height: 279
 });
+
+// ID Generator
+function makeid(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+}
 
 // JGall3go
