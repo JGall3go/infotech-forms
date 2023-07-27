@@ -59,11 +59,11 @@
 
                 <div class="forms-container">
 
-                    {%for form in forms_list%}
+                    {%for form in data["forms-list"]%}
                     <div class="form"
                         style="background-image: url('static/user_static/Soporteti/{{form}}.png'); background-position: center; background-size: cover; text-decoration: none; z-index: 1;">
                         <div class="form-data">
-                            <span class="form-title">{{forms_list[form]}}</span>
+                            <span class="form-title">{{data["forms-list"][form]["title"]}}</span>
                             <div class="form-buttons">
                                 <ion-icon onclick="location.href = '/dashboard/forms/{{form}}/post';"
                                     class="button-form" name="document-text-outline" style="z-index: 2;"></ion-icon>
@@ -86,7 +86,7 @@
 
                 <div class="elements-loaded-container">
                     <span class="elements-loaded-text">
-                        <e>1</e> elements of <e>1</e> displayed
+                        <e>{{ data["forms-qty"] }}</e> elements of <e>{{ data["forms-qty"] }}</e> displayed
                     </span>
                 </div>
             </div>
@@ -98,9 +98,9 @@
             <div class="reports-container-content">
                 <div class="total-post-report">
                     <div class="icon"><ion-icon name="document-text"></ion-icon></div>
-                    <span class="qty">15 Forms</span>
+                    <span class="qty">{{ data["forms-registered-today"] }} Forms</span>
                     <span class="today-text">Registered today</span>
-                    <span class="total-text">Total: <span>147 Forms</span></span>
+                    <span class="total-text">Total: <span>{{ data["forms-registered-all"] }} Forms</span></span>
                 </div>
                 <div class="total-email-report">
                     <canvas id="total-email-report"></canvas>
@@ -121,6 +121,49 @@
 
     </div>
 
+    <script>
+
+        let current_months = []
+
+        '{% for month in data["current-months"] %}'
+            current_months.push(month)
+        '{% endfor %}'
+
+        const ctx = document.getElementById('total-email-report');
+        const originalHeight = ctx.height;
+        const originalWidth = ctx.width;
+        console.log(typeof(current_months))
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: current_months,
+                datasets: [{
+                    label: 'Forms',
+                    data: [12, 19, 3, 5, 2, 3, 1],
+                    borderWidth: 3,
+                    backgroundColor: "#88DC8B",
+                    borderColor: "#bfffc1",
+                    pointStyle: 'rectRounded',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        display: false
+                    },
+                    x: {
+                        beginAtZero: true,
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -138,7 +181,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="/static/js/animations.js"></script>
-    <script src="/static/js/charts.js"></script>
     <script src="/static/js/tooltip.js"></script>
 
 </body>

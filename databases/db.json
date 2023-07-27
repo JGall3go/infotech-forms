@@ -1,0 +1,24 @@
+{
+    "_id": {
+        "$oid": "64b44e1eb451306d9d743890"
+    },
+    "username": "Soporteti",
+    "password": "123",
+    "forms-list": {
+        "acta-servicios": {
+            "creation-date": {
+                "$date": "2023-07-26T05:00:00.000Z"
+            },
+            "title": "Acta de Servicios",
+            "logs": [
+                {
+                    "date": {
+                        "$date": "2023-07-26T05:00:00.000Z"
+                    },
+                    "author": "Soporte",
+                    "email": "soporteti@infotech.edu.co"
+                }
+            ]
+        }
+    }
+}

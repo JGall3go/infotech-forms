@@ -2,6 +2,8 @@ from flask import Flask, request, render_template, session, url_for, redirect, s
 from pymongo import MongoClient
 import random
 import os
+import time
+import datetime
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
@@ -50,7 +52,47 @@ def dashboard():
         user = db["Users"].find_one({"username": username})
         forms_list = user["forms-list"]
 
-        return render_template("dashboard.html", username=username, forms_list=forms_list)
+        # Reports Vars
+        forms_registered_today = 0
+        forms_registered_all = 0
+        most_used_form = ""
+        forms_qty = 0
+        
+        all_months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octuber', 'November', 'December']
+        current_months = []
+
+        count = 0
+        for month in all_months:
+
+            count += 1
+            if count <= datetime.date.today().month:
+                current_months.append(month)
+
+        print(current_months)
+
+        # current_months = [month for count, month in enumerate(all_months, 1) if count <= datetime.date.today().month]
+        # Compression Lists
+
+        # Find forms registered today
+        for form in forms_list:
+
+            forms_qty += 1 # Qty of items found in search bar (in process)
+            forms_registered_all += 1
+
+            for log in forms_list[form]["logs"]:
+                if log["date"].date().day == datetime.date.today().day:
+                    forms_registered_today += 1
+
+        data = {
+            "forms-list": forms_list,
+            "forms-registered-today": forms_registered_today,
+            "forms-registered-all": forms_registered_all,
+            "most-used-form": most_used_form,
+            "forms-qty": forms_qty,
+            "current-months": current_months
+        }
+
+        return render_template("dashboard.html", username=username, data=data)
     
     else:
         return redirect(url_for("login"))
