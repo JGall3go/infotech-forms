@@ -3,8 +3,6 @@ let profile_container = document.querySelector(".profile-container")
 let tooltip = document.querySelector(".tooltip-menu")
 let tooltip_content = document.querySelector(".tooltip-menu-content")
 
-console.log(tooltip)
-
 profile_container.addEventListener("mouseenter", display_tooltip);
 tooltip.addEventListener("mouseenter", display_tooltip);
 profile_container.addEventListener("mouseleave", hide_tooltip);

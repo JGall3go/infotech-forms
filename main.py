@@ -55,11 +55,12 @@ def dashboard():
         # Reports Vars
         forms_registered_today = 0
         forms_registered_all = 0
-        most_used_form = ""
         forms_qty = 0
+        form_logs = [0] * len(forms_list)
         
         all_months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octuber', 'November', 'December']
         current_months = []
+        current_forms_by_months = []
 
         count = 0
         for month in all_months:
@@ -67,29 +68,48 @@ def dashboard():
             count += 1
             if count <= datetime.date.today().month:
                 current_months.append(month)
-
-        print(current_months)
+                current_forms_by_months.append(0)
 
         # current_months = [month for count, month in enumerate(all_months, 1) if count <= datetime.date.today().month]
         # Compression Lists
 
         # Find forms registered today
-        for form in forms_list:
+        all_form_titles = []
+        for count, form in enumerate(forms_list):
 
-            forms_qty += 1 # Qty of items found in search bar (in process)
-            forms_registered_all += 1
+            all_form_titles.append(forms_list[form]["title"])
 
             for log in forms_list[form]["logs"]:
+
+                forms_qty += 1 # Qty of items found in search bar (in process)
+                forms_registered_all += 1
+                form_logs[count] += 1
+
+                # Counter for every form registered today
                 if log["date"].date().day == datetime.date.today().day:
                     forms_registered_today += 1
+
+                # Counter for all forms registered every month
+                if log["date"].date().month - 1 <= len(current_forms_by_months):
+                    current_forms_by_months[log["date"].date().month-1] += 1
+
+        # Get most used form
+        most_used_form = 0
+        past_item = 0
+        for count, item in enumerate(form_logs):
+            
+            if item > past_item:
+                most_used_form = count
 
         data = {
             "forms-list": forms_list,
             "forms-registered-today": forms_registered_today,
             "forms-registered-all": forms_registered_all,
-            "most-used-form": most_used_form,
+            "most-used-form-title": all_form_titles[most_used_form],
+            "most-used-form-reports": form_logs[most_used_form],
             "forms-qty": forms_qty,
-            "current-months": current_months
+            "current-months": current_months,
+            "current-forms": current_forms_by_months
         }
 
         return render_template("dashboard.html", username=username, data=data)
@@ -108,11 +128,9 @@ def dashboard_form(form):
         form_name = forms_list[form]
 
         if form in forms_list:
-
             return render_template(f'user_templates/{username}/{form}.html', data="", username=username, form=form_name, form_download=False)
         
         else:
-
             return "No tienes permiso para ver este formulario!!"
     
     else:
