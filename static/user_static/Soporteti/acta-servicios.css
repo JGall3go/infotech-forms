@@ -51,6 +51,7 @@ header {
   color: #7e7e7e;
   font-weight: 600;
   font-size: 20px;
+  width: max-content;
 }
 
 .control-panel-title .sub-title {
@@ -146,11 +147,11 @@ header {
   .infotech-logo {
     width: 80px;
     height: 40px;
-    margin-right: 15%;
+    margin-right: 10%;
   }
 
   .control-panel-title {
-    margin-right: 25%;
+    margin-right: 15%;
   }
 
   .control-panel-title .title {

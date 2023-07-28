@@ -139,28 +139,27 @@ canvas_container.forEach((item) => {
     save_button.addEventListener("click", e => {
 
         let img = canvas.toDataURL('image/png');
-        let firm_img = "";
 
         if (item.id == "user-canvas-container") {
-            firm_img = document.querySelector("#user-firm-image");
-            firm_img.src = img;
+
+            let user_firm_img = document.querySelector("#user-firm-image");
+            user_firm_img.src = img;
 
             document.body.style.overflow = "scroll";
             item.style.display = "none";
 
-            let reader = getBase64Image(firm_img);
-            localStorage.setItem('user-firm-image', reader);
+            localStorage.setItem('user-firm-image', user_firm_img.src);
         }
 
         if (item.id == "tech-canvas-container") {
-            firm_img = document.querySelector("#tech-firm-image");
-            firm_img.src = img;
+
+            let tech_firm_img = document.querySelector("#tech-firm-image");
+            tech_firm_img.src = img;
 
             document.body.style.overflow = "scroll";
             item.style.display = "none";
 
-            let reader = getBase64Image(firm_img);
-            localStorage.setItem('tech-firm-image', reader);
+            localStorage.setItem('tech-firm-image', tech_firm_img.src);
         }
 
     })
@@ -169,25 +168,6 @@ canvas_container.forEach((item) => {
         context.setTransform(1, 0, 0, 1, 0, 0);
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
     })
-
-    function getBase64Image(img) {
-        // Create an empty canvas element
-        var canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-    
-        // Copy the image contents to the canvas
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-    
-        // Get the data-URL formatted image
-        // Firefox supports PNG and JPEG. You could check img.src to
-        // guess the original format, but be aware the using "image/jpg"
-        // will re-encode the image.
-        var dataURL = canvas.toDataURL("image/png");
-    
-        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-    }
 });
 
 // Canvas Show

@@ -16,7 +16,7 @@
 
     <header>
         <div class="header-container">
-            <img src="/static/infotechlogo.png" class="infotech-logo" width="115px" height="50px">
+            <img src="/static/infotechlogo.png" class="infotech-logo" width="115px" height="50px" onclick="location.href = '/dashboard';" style="cursor: pointer;">
             <div class="control-panel-title">
                 <span class="title">{{ form["title"] }}</span>
                 <span class="sub-title" onclick="location.href = '/dashboard';">Dashboard</span>
@@ -233,12 +233,12 @@
                     <th colspan="2" style="text-align: center;">Firmas:</th>
                 </tr>
                 <tr style="height: 150px;">
-                    <td style="text-align: center;"><img src="/static/descarga.png"><span>Usuario: Firma y Sello</span></td>
-                    <td style="text-align: center;"><img src="/static/descarga.png"><span>Ingeniero/Técnico:</span></td>
+                    <td style="text-align: center;"><img id="user-firm-image"><span>Usuario: Firma y Sello</span></td>
+                    <td style="text-align: center;"><img id="tech-firm-image"><span>Ingeniero/Técnico:</span></td>
                 </tr>
             </table>
 
-            <hr id="line" style="margin-top: 360px">
+            <hr id="line" style="margin-top: 310px">
 
             <div class="footer-text">
                 <span style="text-decoration: underline;">www.infotechdecolombia.com</span>
@@ -256,6 +256,15 @@
     <script src="/static/js/jsPDF/dist/jspdf.umd.js"></script>
 
     <script>
+
+        let user_firm_image = localStorage.getItem("user-firm-image")
+        let tech_firm_image = localStorage.getItem("tech-firm-image")
+
+        let firm_image_container = document.getElementById("user-firm-image")
+        let tech_image_container = document.getElementById("tech-firm-image")
+
+        firm_image_container.setAttribute("src", user_firm_image)
+        tech_image_container.setAttribute("src", tech_firm_image)
 
         window.jsPDF = window.jspdf.jsPDF;
 
