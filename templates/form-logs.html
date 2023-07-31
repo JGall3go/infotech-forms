@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>{{ data["form-title"] }}</title>
+
+    <!-- Styles -->
+    <link rel="icon" type="image/png" href="/static/favicon.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/logs.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <img src="/static/infotechlogo.png" class="infotech-logo" width="115px" height="50px"
+                onclick="location.href = '/dashboard';" style="cursor: pointer;">
+            <div class="control-panel-title">
+                <span class="title">{{ data["form-title"] }}</span>
+                <span class="sub-title" onclick="location.href = '/dashboard';">Dashboard</span>
+            </div>
+            <div class="profile-container">
+                <span class="username-span">{{username}}</span>
+                <div class="tooltip-container">
+                    <img src="/static/user.png" class="user-logo" width="40px" height="40px" style="padding: 5px;">
+                    <ion-icon name="caret-down-outline"></ion-icon>
+                    <div class="tooltip-menu" style="display: none;">
+                        <div class="tooltip-menu-content">
+                            <a href="/control-panel/profile">Profile</a>
+                            <a href="/log-out">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content">
+
+        <div class="breadcrumbs">
+            <span>Dashboard</span>
+            <div class="breadcrumb-bar" style="margin-right: 10px;"></div>
+            <span>{{ data["form-title"] }}</span>
+            <div class="breadcrumb-bar" style="margin-right: 10px;"></div>
+            <span>Logs</span>
+            <div class="breadcrumb-bar"></div>
+        </div>
+
+        <div class="content-container">
+
+            <div class="form-title-container">
+                <span>{{ data["form-title"] }}</span>
+            </div>
+
+            <div class="table-container">
+
+                <div class="form-search-bar-container">
+                    <input type="text" placeholder="Search...">
+                </div>
+
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Hour</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for log in data["logs"] %}
+                        <tr>
+                            <th scope="row" style="border-top: 1px solid #dee2e6;">{{ log["num"] }}</th>
+                            <td>{{ log["author"] }}</td>
+                            <td>{{ log["date"] }}</td>
+                            <td>{{ log["hour"] }}</td>
+                            <td>{{ log["email"] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="elements-loaded-container">
+                    <span class="elements-loaded-text">
+                        <e>{{ data["total-logs"] }}</e> elements of <e>{{ data["total-logs"] }}</e> displayed
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-text">
+            <span>An <e>InfoTech</e> Solution.</span>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+
+    <script src="/static/js/tooltip.js"></script>
+
+</body>
+
+</html>

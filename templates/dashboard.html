@@ -65,11 +65,11 @@
                             <div class="form-buttons">
                                 <ion-icon onclick="location.href = '/dashboard/forms/{{form}}/post';"
                                     class="button-form" name="document-text-outline" style="z-index: 2;"></ion-icon>
-                                <ion-icon onclick="location.href = '/dashboard/forms/{{form}}';" class="button-see"
+                                <ion-icon onclick="location.href = '/dashboard/forms/{{form}}'; localStorage.clear();" class="button-see"
                                     name="eye-outline"></ion-icon>
                                 <ion-icon onclick="location.href = '/documents/{{form}}';" class="button-download"
                                     name="download-outline"></ion-icon>
-                                <ion-icon class="button-logs" name="file-tray-full-outline"></ion-icon>
+                                <ion-icon class="button-logs" name="file-tray-full-outline" onclick="location.href = '/dashboard/forms/{{form}}/logs';"></ion-icon>
                             </div>
                         </div>
                     </div>

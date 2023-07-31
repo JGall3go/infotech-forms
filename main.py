@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, session, url_for, redirect, send_file
 from pymongo import MongoClient
+import pymongo
 import random
 import os
 import time
@@ -8,11 +9,12 @@ import datetime
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 # Database
-client = MongoClient('mongodb://localhost:27017/') 
-db = client['InfoTechForms']
+client = MongoClient('mongodb://localhost:27017/')
+collection = client['InfoTechForms']
 
 # Session vars
 app.secret_key = "super secret key"
+
 
 @app.route('/')
 def principal():
@@ -20,14 +22,16 @@ def principal():
     if "username" in session:
 
         return redirect(url_for("dashboard"))
-    
+
     else:
         return redirect(url_for("login"))
+
 
 @app.route('/login')
 def login():
 
     return render_template('login.html')
+
 
 @app.post('/login')
 def login_post():
@@ -35,7 +39,8 @@ def login_post():
     username = request.form.get("username")
     password = request.form.get("password")
 
-    user = db["Users"].find_one({"username": username, "password": str(password)})
+    user = collection["Users"].find_one(
+        {"username": username, "password": str(password)})
 
     if user:
         session["username"] = username
@@ -43,13 +48,25 @@ def login_post():
     else:
         return redirect(url_for("login"))
 
+
+@app.route("/dashboard/forms")
+def forms():
+
+    if "username" in session:
+
+        return redirect(url_for("dashboard"))
+
+    else:
+        return redirect(url_for("login"))
+
+
 @app.route('/dashboard')
 def dashboard():
 
     if "username" in session:
 
         username = session["username"]
-        user = db["Users"].find_one({"username": username})
+        user = collection["Users"].find_one({"username": username})
         forms_list = user["forms-list"]
 
         # Reports Vars
@@ -57,8 +74,9 @@ def dashboard():
         forms_registered_all = 0
         forms_qty = 0
         form_logs = [0] * len(forms_list)
-        
-        all_months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octuber', 'November', 'December']
+
+        all_months = ['January', 'February', 'March', 'April', 'May', 'June',
+                      'July', 'August', 'September', 'Octuber', 'November', 'December']
         current_months = []
         current_forms_by_months = []
 
@@ -81,7 +99,7 @@ def dashboard():
 
             for log in forms_list[form]["logs"]:
 
-                forms_qty += 1 # Qty of items found in search bar (in process)
+                forms_qty += 1  # Qty of items found in search bar (in process)
                 forms_registered_all += 1
                 form_logs[count] += 1
 
@@ -97,7 +115,7 @@ def dashboard():
         most_used_form = 0
         past_item = 0
         for count, item in enumerate(form_logs):
-            
+
             if item > past_item:
                 most_used_form = count
 
@@ -113,9 +131,10 @@ def dashboard():
         }
 
         return render_template("dashboard.html", username=username, data=data)
-    
+
     else:
         return redirect(url_for("login"))
+
 
 @app.route('/dashboard/forms/<form>')
 def dashboard_form(form):
@@ -123,18 +142,19 @@ def dashboard_form(form):
     if "username" in session:
 
         username = session["username"]
-        user = db["Users"].find_one({"username": username})
+        user = collection["Users"].find_one({"username": username})
         forms_list = user["forms-list"]
         form_name = forms_list[form]
 
         if form in forms_list:
             return render_template(f'user_templates/{username}/{form}.html', data="", username=username, form=form_name, form_download=False)
-        
+
         else:
             return "No tienes permiso para ver este formulario!!"
-    
+
     else:
         return redirect(url_for("login"))
+
 
 @app.route('/log-out')
 def log_out():
@@ -145,13 +165,14 @@ def log_out():
 
 # FORMS
 
+
 @app.route("/dashboard/forms/<form>/post", methods=['GET', 'POST'])
 def form_filling(form):
 
     if "username" in session:
 
         username = session["username"]
-        user = db["Users"].find_one({"username": username})
+        user = collection["Users"].find_one({"username": username})
         forms_list = user["forms-list"]
         form_name = forms_list[form]
 
@@ -168,7 +189,8 @@ def form_filling(form):
             diagnostico = request.form.get("diagnostico")
             hora_inicial = request.form.get("hinicio")
             hora_final = request.form.get("hfinal")
-            
+            email = request.form.get("email")
+
             # Se extraen todas las imagenes, se guardan localmente y se almacenan en una variable de tipo lista
             evidencia = request.files.getlist("evidencia")
             imgs = []
@@ -179,14 +201,29 @@ def form_filling(form):
                     if count < 9:
                         random_bits = random.getrandbits(128)
                         img_hash = "%032x" % random_bits
-                        file.save(os.path.join("static/evidences/", f"{str(img_hash)}.png"))
+                        file.save(os.path.join(
+                            "static/evidences/", f"{str(img_hash)}.png"))
                         imgs.append(img_hash)
-                        count+=1
+                        count += 1
 
             satisfaccion = request.form.get("satisfaccion")
             tiempo_respuesta = request.form.get("tiempo_respuesta")
             calidad_tecnica = request.form.get("calidad_tecnica")
             calidad_humana = request.form.get("calidad_humana")
+
+            # Updating DB
+            new_log = {
+                "date": datetime.datetime.now(),
+                "author": nombre_ing,
+                "email": email
+            }
+
+            current_log_list = forms_list[form]["logs"]
+            current_log_list.append(new_log)
+
+            log = { "$set": {f"forms-list.{form}.logs": current_log_list} }
+
+            collection["Users"].update_one({"username": username}, log)
 
             return render_template('user_templates/Soporteti/acta-servicios.html', data=[fecha_servicio, nombre_ing, nombre_client, sede, nombre_user, tel, ticket, mservice, diagnostico, imgs, satisfaccion, tiempo_respuesta, calidad_tecnica, calidad_humana, hora_inicial, hora_final], username=username, form=form_name, form_download=True)
 
@@ -196,11 +233,55 @@ def form_filling(form):
     else:
         return redirect(url_for("login"))
 
+
 @app.route('/documents/<path:filename>', methods=['GET', 'POST'])
 def download(filename):
     path = f"documents\\{session['username']}\\{filename}.pdf"
     return send_file(path, as_attachment=True)
 
+# Form Logs
+
+
+@app.route("/dashboard/forms/<form>/logs")
+def form_logs(form):
+
+    username = session["username"]
+    user = collection["Users"].find_one({"username": username})
+    forms_list = user["forms-list"]
+    form_title = forms_list[form]["title"]
+    form_logs = forms_list[form]["logs"]
+
+    log_list = []
+
+    count = 0
+    for log in form_logs:
+
+        count += 1
+
+        form_date = log["date"]
+        form_author = log["author"]
+        form_email = log["email"]
+        hour = form_date.strftime("%H:%M:%S")
+
+        log = {
+            "num": count,
+            "date": form_date.date(),
+            "hour": hour,
+            "author": form_author,
+            "email": form_email
+        }
+
+        log_list.append(log)
+
+    data = {
+        "form-title": form_title,
+        "logs": log_list,
+        "total-logs": count
+    }
+
+    return render_template(f"form-logs.html", form="Acta de Servicios", data=data)
+
+
 if __name__ == '__main__':
 
-    app.run(debug = True, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0")
